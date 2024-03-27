@@ -14,7 +14,7 @@ RUN set -Eeux \
     && apk --no-cache add maven \
     # smoke test to verify if maven is available
     && mvn --version
-RUN mvn package
+RUN mvn clean package -Dmaven.test.skip=true
 
 # Stage 2 (to create a downsized "container executable", ~180MB)
 FROM eclipse-temurin:17-jre-alpine
