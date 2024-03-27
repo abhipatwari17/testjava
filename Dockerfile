@@ -20,7 +20,7 @@ RUN mvn clean package -Dmaven.test.skip=true
 FROM eclipse-temurin:17-jre-alpine
 RUN apk --no-cache add ca-certificates
 WORKDIR /root/
-COPY --from=builder /usr/src/myapp/target/app.jar .
+COPY --from=builder /usr/src/myapp/target/conversion-0.0.1-SNAPSHOT.jar app.jar
 
 EXPOSE 8123
 ENTRYPOINT ["java", "-jar", "./app.jar"]
